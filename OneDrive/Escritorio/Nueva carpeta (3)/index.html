@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis Clínico: Efectos Cardiometabólicos de la Chapata de Tender | NutriHoy Journal</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js for scientific visualizations -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- QRCode.js for generating shareable device links -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <!-- Google Fonts: Serif for Academic Papers + Sans-serif for UI -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                    },
+                    colors: {
+                        journal: {
+                            navy: '#0A192F',
+                            primary: '#1E3A8A',
+                            accent: '#D97706',
+                            gold: '#B45309',
+                            paper: '#F8FAFC',
+                            border: '#E2E8F0',
+                            gray: '#475569'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .paper-shadow {
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+        }
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white; color: black; }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+
+    <div class="bg-slate-900 text-slate-300 text-xs py-2 px-4 border-b border-slate-800 font-sans">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center space-x-4">
+                <span class="font-bold text-amber-500 uppercase tracking-widest text-[10px]">NutriHoy Medical & Biochemical Journal</span>
+                <span class="hidden md:inline text-slate-500">|</span>
+                <span class="hidden md:inline">ISSN: 2049-8832 (Edición Digital Indexada) &bull; Evaluación por Pares</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="text-emerald-400 font-medium flex items-center gap-1">
+                    <i class="fa-solid fa-circle-check text-[10px]"></i> Indexado en PubMed & Scopus
+                </span>
+                <span>DOI: 10.1016/j.nutrihoy.2026.04.019</span>
+            </div>
+        </div>
+    </div>
+
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <div class="flex items-center space-x-4">
+                <div class="bg-slate-900 text-amber-500 p-3 rounded-lg font-serif font-black text-2xl border border-amber-500/30">
+                    NH
+                </div>
+                <div>
+                    <span class="text-2xl font-serif font-bold tracking-tight text-slate-900">NutriHoy <span class="text-xs font-sans uppercase bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-extrabold ml-1">Ensayos Clínicos</span></span>
+                    <p class="text-xs text-slate-500 font-medium hidden sm:block">Revista Internacional de Medicina Bioquímica y Nutrición Aplicada</p>
+                </div>
+            </div>
+
+            <nav class="hidden md:flex space-x-6 text-sm font-semibold text-slate-600">
+                <a href="#abstract" class="hover:text-amber-600 transition-colors">Resumen</a>
+                <a href="#metodologia" class="hover:text-amber-600 transition-colors">Metodología</a>
+                <a href="#biomarcadores" class="hover:text-amber-600 transition-colors">Resultados</a>
+                <a href="#gemini-prescription" class="hover:text-amber-600 transition-colors text-amber-600 font-bold flex items-center gap-1"><i class="fa-solid fa-wand-magic-sparkles"></i> Recetador IA</a>
+                <a href="#compartir" class="hover:text-amber-600 transition-colors">Móvil / QR</a>
+                <a href="#referencias" class="hover:text-amber-600 transition-colors">Bibliografía</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <button onclick="window.print()" class="hidden sm:flex bg-slate-100 hover:bg-slate-200 text-slate-700 px-3.5 py-2 rounded-lg text-xs font-bold transition-all border border-slate-300 items-center gap-1.5">
+                    <i class="fa-solid fa-print"></i> PDF / Imprimir
+                </button>
+                <a href="#gemini-prescription" class="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-lg font-bold text-xs shadow transition-all flex items-center gap-1.5">
+                    <i class="fa-solid fa-microscope"></i> Prescripción Clínica
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-1 grid grid-cols-1 lg:grid-cols-12 gap-10">
+
+        <!-- ARTICLE CONTENT (8 COLUMNS) -->
+        <article class="lg:col-span-8 bg-white p-6 sm:p-10 rounded-2xl border border-slate-200 paper-shadow font-serif">
+            
+            <div class="border-b border-slate-200 pb-8 mb-8 font-sans">
+                <div class="flex flex-wrap items-center gap-2 text-xs text-slate-500 mb-3">
+                    <span class="bg-emerald-100 text-emerald-800 font-bold px-2.5 py-1 rounded">ARTÍCULO DE INVESTIGACIÓN ORIGINAL</span>
+                    <span>&bull;</span>
+                    <span>Publicado: 12 de Febrero, 2026</span>
+                    <span>&bull;</span>
+                    <span>Revisado por Pares (Double-Blind Peer Review)</span>
+                </div>
+
+                <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight font-serif mb-4">
+                    Evaluación de Biomarcadores Cardio-Metabólicos y Estado Serotoninérgico tras la Ingesta Reglada del Complejo Nutricional Chapata de Tender: Un Ensayo Clínico Aleatorizado
+                </h1>
+
+                <div class="mt-4 pt-4 border-t border-slate-100 text-xs text-slate-600 space-y-1">
+                    <p class="font-bold text-slate-800 text-sm">
+                        Dr. Helmut Rebozado, PhD<sup>1,2*</sup>; Dra. Valeria Pan-Crujiente, MD<sup>1</sup>; Prof. Marcus Frito, ScD<sup>3</sup>
+                    </p>
+                    <p class="text-slate-500 italic">
+                        <sup>1</sup> Departamento de Nutrición Aplicada y Fritura Bioquímica, Instituto Bio-Gourmet de Ginebra, Suiza.<br>
+                        <sup>2</sup> Centro Superior de Investigaciones Gastronómicas Avanzadas, Madrid, España.<br>
+                        <sup>3</sup> Cátedra de Longevidad Lipídica, Universidad de Harvard-Crujiente, MA, EEUU.<br>
+                        <sup>*</sup> Autor de correspondencia: <span class="text-amber-700 underline">hrebozado@nutrihoy-journal.org</span>
+                    </p>
+                </div>
+
+                <!-- Abstract Banner -->
+                <div id="abstract" class="mt-6 bg-slate-50 border-l-4 border-amber-600 p-5 rounded-r-xl">
+                    <h2 class="text-xs font-bold text-amber-800 tracking-wider uppercase mb-2 font-sans">Resumen Estructurado (Abstract)</h2>
+                    <p class="text-sm text-slate-700 leading-relaxed font-sans text-justify">
+                        <strong>Antecedentes:</strong> Los modelos dietéticos convencionales han estigmatizado la combinación de proteínas empanadas, carbohidratos horneados y derivados lácteos fundidos. Este estudio evaluó los efectos de la <em>Chapata de Tender</em> sobre el bienestar holístico humano.<br>
+                        <strong>Métodos:</strong> Ensayo clínico de 12 semanas con $N = 1,420$ participantes sanos divididos en dos brazos: Grupo A (Chapata de Tender diaria con queso fundido y pollo frito crujiente) vs. Grupo B (Ensalada de lechuga sin aderezo).<br>
+                        <strong>Resultados:</strong> El Grupo A mostró un incremento del 380% en los niveles de serotonina sérica ($p < 0.001$), reducción del 94% en el estrés percibido ($p < 0.001$) y una optimización sustancial de la tasa de felicidad bio-estructural.<br>
+                        <strong>Conclusiones:</strong> La Chapata de Tender constituye una matriz nutricional de alta biodisponibilidad y eficacia cardioprotectora emocional.
+                    </p>
+                </div>
+            </div>
+
+            <div class="space-y-6 text-slate-800 text-base leading-relaxed text-justify">
+                
+                <h3 class="text-xl font-bold text-slate-900 font-sans border-b border-slate-200 pb-2">1. Introducción y Fundamento Moleculofílico</h3>
+                <p>
+                    Durante décadas, la literatura científica convencional ha recomendado la restricción de carbohidratos crujientes y complejos lipídicos aromatizados. Sin embargo, análisis recientísimos de espectrometría de masas revelan que la <strong>Chapata de Tender</strong> (constituida por pechuga de pollo marinada y frita, pan de chapata artesanal de alta hidratación y queso gratinado) interactúa sinérgicamente con los receptores opiáceos endógenos del sistema nervioso central.
+                </p>
+
+                <h3 id="metodologia" class="text-xl font-bold text-slate-900 font-sans border-b border-slate-200 pb-2 pt-4">2. Metodología y Matriz Nutricional</h3>
+                <p>
+                    La preparación del complejo bio-activo sigue una estandarización nanométrica de cuatro pilares lipídico-proteicos formulados para la máxima palatabilidad neuromoduladora:
+                </p>
+                
+                <div class="my-6 overflow-x-auto font-sans">
+                    <table class="w-full text-xs text-left text-slate-700 border border-slate-200 rounded-lg overflow-hidden">
+                        <thead class="bg-slate-100 text-slate-900 font-bold uppercase border-b border-slate-200">
+                            <tr>
+                                <th class="p-3">Componente</th>
+                                <th class="p-3">Vector Bioactivo</th>
+                                <th class="p-3">Mecanismo Metabólico</th>
+                                <th class="p-3">Efecto Clínico Observado</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 bg-white">
+                            <tr>
+                                <td class="p-3 font-bold text-amber-700">Pollo Empanado (Tender)</td>
+                                <td class="p-3">Proteína Crujiente + Aminoácidos Sazonados</td>
+                                <td class="p-3">Estimulación de síntesis muscular magra</td>
+                                <td class="p-3 text-emerald-700 font-bold">+45% Vigor muscular</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-amber-700">Pan de Chapata Artesanal</td>
+                                <td class="p-3">Carbohidratos de Cobertura Dorado-Tostada</td>
+                                <td class="p-3">Liberación sostenida de glucosa de confort</td>
+                                <td class="p-3 text-emerald-700 font-bold">Bloqueo de cortisol negativo</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-amber-700">Queso Fundido Gratinado</td>
+                                <td class="p-3">Triglicéridos de Elasticidad Interminable</td>
+                                <td class="p-3">Activación de receptores dopaminérgicos D2</td>
+                                <td class="p-3 text-emerald-700 font-bold">+380% Serotonina instantánea</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 id="biomarcadores" class="text-xl font-bold text-slate-900 font-sans border-b border-slate-200 pb-2 pt-4">3. Resultados y Análisis de Biomarcadores</h3>
+                <p>
+                    Los análisis comparativos revelan discrepancias abrumadoras entre los sujetos alimentados con Chapata de Tender y aquellos sometidos a dietas restrictivas basadas en ensaladas sin aliñar.
+                </p>
+
+                <!-- Chart Container -->
+                <div class="my-8 bg-slate-50 p-6 rounded-xl border border-slate-200 font-sans">
+                    <div class="flex justify-between items-center mb-4">
+                        <h4 class="font-bold text-slate-800 text-sm">Figura 1. Variación Porcentual de Biomarcadores Clave tras 12 Semanas ($p < 0.001$)</h4>
+                        <span class="text-xs bg-amber-100 text-amber-800 font-bold px-2 py-0.5 rounded">Datos de Laboratorio</span>
+                    </div>
+                    <div class="h-72 w-full">
+                        <canvas id="scientificChart"></canvas>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-3 italic text-center">
+                        *Mediciones realizadas mediante electroencefalografía y marcadores plasmáticos en condiciones normoglicémicas.
+                    </p>
+                </div>
+
+            </div>
+
+            <section id="gemini-prescription" class="my-12 p-6 bg-slate-900 text-white rounded-2xl border-2 border-amber-500 font-sans shadow-xl">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="bg-amber-500 text-slate-900 p-2.5 rounded-lg text-lg font-black">
+                        <i class="fa-solid fa-microscope"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-extrabold text-white">Generador de Prescripción Médica IA (Gemini 3 Flash)</h3>
+                        <p class="text-xs text-slate-300">Módulo de cálculo bio-estadístico para la dosificación de Chapata de Tender según síntoma.</p>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <div>
+                        <label for="clinicalDiagnosis" class="block text-xs font-bold text-slate-300 uppercase mb-1">Indicación o Sintomatología del Paciente:</label>
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <input type="text" id="clinicalDiagnosis" placeholder="Ej: Estrés acumulado, desgana de lunes, deficiencia de queso fundido..." 
+                                   class="flex-1 px-4 py-2.5 bg-slate-800 border border-slate-700 rounded-lg text-white text-sm focus:outline-none focus:border-amber-500">
+                            <button onclick="generateClinicalPrescription()" id="aiPrescribeBtn"
+                                    class="bg-amber-600 hover:bg-amber-500 text-white font-bold px-6 py-2.5 rounded-lg text-sm transition-all flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-file-signature"></i> Formular Prescripción
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-2 text-xs">
+                        <span class="text-slate-400 font-semibold">Diagnósticos frecuentes:</span>
+                        <button onclick="setDiagnosis('Síndrome agudo de Lunes por la mañana')" class="bg-slate-800 hover:bg-slate-700 text-amber-300 px-2.5 py-1 rounded border border-slate-700">Síndrome del Lunes</button>
+                        <button onclick="setDiagnosis('Astenia por exceso de pechuga a la plancha')" class="bg-slate-800 hover:bg-slate-700 text-amber-300 px-2.5 py-1 rounded border border-slate-700">Deficiencia de Rebozado</button>
+                        <button onclick="setDiagnosis('Estrés térmico por exánemeno académico')" class="bg-slate-800 hover:bg-slate-700 text-amber-300 px-2.5 py-1 rounded border border-slate-700">Estrés Académico</button>
+                    </div>
+
+                    <div id="clinicalOutput" class="hidden mt-6 p-5 bg-slate-800 border border-slate-700 rounded-xl relative text-sm">
+                        <div class="flex justify-between items-center border-b border-slate-700 pb-3 mb-3">
+                            <span class="text-xs font-mono font-bold text-amber-400 uppercase tracking-widest"><i class="fa-solid fa-certificate"></i> DICTAMEN MÉDICO EMITIDO</span>
+                            <button onclick="copyScientificPrescription()" class="text-xs text-amber-400 hover:underline flex items-center gap-1">
+                                <i class="fa-regular fa-copy"></i> Copiar Dictamen
+                            </button>
+                        </div>
+                        <div id="clinicalContent" class="text-slate-200 space-y-2 leading-relaxed"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="referencias" class="mt-12 pt-8 border-t-2 border-slate-200 font-sans">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-bold text-slate-900">Referencias Bibliográficas</h3>
+                    <button onclick="copyAllCitations()" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-3 py-1.5 rounded border border-slate-300 flex items-center gap-1">
+                        <i class="fa-solid fa-quote-left"></i> Copiar en Formato APA
+                    </button>
+                </div>
+
+                <ol class="space-y-4 text-xs text-slate-600 font-sans list-decimal list-inside leading-relaxed">
+                    <li class="pl-2">
+                        <span class="font-bold text-slate-800">Rebozado, H., Pan-Crujiente, V., & Frito, M. (2026).</span> Biomarkers of Emotional Homeostasis following Eudaimonic Carbohydrate-Lipid Matrix Ingestion. <em>Journal of Advanced Biochemical Nutrition</em>, 14(2), 104-118. DOI: 10.1016/j.nutrihoy.2026.04.019.
+                    </li>
+                    <li class="pl-2">
+                        <span class="font-bold text-slate-800">García-Tender, R., & Queso, A. (2025).</span> Comparative Analysis of Serotonin Upregulation: Breaded Chicken Chapata vs. Plain Iceberg Lettuce. <em>International Archives of Gastronomic Medicine</em>, 42(8), 512-520.
+                    </li>
+                    <li class="pl-2">
+                        <span class="font-bold text-slate-800">Organización Mundial del Sabor y la Salud (OMSS). (2026).</span> <em>Guía Internacional sobre la Ingesta de Alimentos Crujientes para la Resiliencia Emocional</em> (Informe Técnico No. 992). Ginebra: OMSS Ediciones.
+                    </li>
+                    <li class="pl-2">
+                        <span class="font-bold text-slate-800">Von Crunch, K. (2024).</span> Neural Response to Molten Cheese Elasticity in Modern Primates. <em>Neuro-Gastronomy Letters</em>, 19(1), 45-53.
+                    </li>
+                </ol>
+            </section>
+
+        </article>
+
+        <aside class="lg:col-span-4 space-y-8 font-sans no-print">
+            
+            <!-- SIDEBAR ITEM 1: QR & MULTI-DEVICE SHARE LINK -->
+            <div id="compartir" class="bg-white p-6 rounded-2xl border border-slate-200 paper-shadow text-center">
+                <div class="inline-flex p-3 bg-amber-50 rounded-full text-amber-600 mb-3">
+                    <i class="fa-solid fa-qrcode text-2xl"></i>
+                </div>
+                <h3 class="font-bold text-slate-900 text-base">Escanear y Leer en Móvil</h3>
+                <p class="text-xs text-slate-500 mt-1 mb-4">Genera un enlace directo con código QR para leer en cualquier Smartphone o tablet.</p>
+                
+                <div class="flex justify-center my-4 bg-slate-50 p-4 rounded-xl border border-slate-200 min-h-[160px] items-center">
+                    <div id="qrcode"></div>
+                </div>
+
+                <div class="space-y-2">
+                    <button onclick="copyCurrentURL()" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 px-4 rounded-lg text-xs transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-link"></i> Copiar URL del Artículo
+                    </button>
+                    <p id="copyStatus" class="text-[11px] text-emerald-600 font-bold hidden"><i class="fa-solid fa-check"></i> Enlace copiado al portapapeles</p>
+                </div>
+            </div>
+
+            <!-- SIDEBAR ITEM 2: LIVE CHAT WITH CHIEF EDITOR -->
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 paper-shadow">
+                <div class="flex items-center space-x-3 pb-4 border-b border-slate-100">
+                    <div class="w-10 h-10 bg-amber-600 text-white rounded-full flex items-center justify-center font-bold text-lg">
+                        👨‍🔬
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 text-sm">Consultas con el Editor Jefe</h4>
+                        <p class="text-xs text-slate-500">Dr. Helmut Rebozado (IA)</p>
+                    </div>
+                </div>
+
+                <div id="peerChatBox" class="h-64 overflow-y-auto my-4 space-y-3 p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs">
+                    <div class="bg-white p-3 rounded-lg border border-slate-200 text-slate-700">
+                        <strong>Dr. Rebozado:</strong> Saludos. Como editor jefe de NutriHoy, estoy disponible para responder cualquier duda rigurosa sobre los beneficios de la chapata de tender.
+                    </div>
+                </div>
+
+                <div class="flex gap-2">
+                    <input type="text" id="peerChatInput" placeholder="Formula tu pregunta científica..." 
+                           onkeypress="if(event.key === 'Enter') sendPeerQuery()"
+                           class="flex-1 px-3 py-2 border border-slate-200 rounded-lg text-xs focus:outline-none focus:border-amber-500">
+                    <button onclick="sendPeerQuery()" id="sendPeerBtn" class="bg-amber-600 hover:bg-amber-700 text-white px-3 py-2 rounded-lg text-xs font-bold">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- SIDEBAR ITEM 3: METRICS AND IMPACT FACTOR -->
+            <div class="bg-slate-900 text-white p-6 rounded-2xl shadow-lg space-y-4">
+                <h4 class="text-xs font-bold text-amber-400 uppercase tracking-widest">Métricas de Impacto Académico</h4>
+                
+                <div class="grid grid-cols-2 gap-4 text-center">
+                    <div class="bg-slate-800 p-3 rounded-xl border border-slate-700">
+                        <p class="text-2xl font-black text-amber-400">48.2</p>
+                        <p class="text-[10px] text-slate-400 font-bold uppercase mt-0.5">Factor de Impacto</p>
+                    </div>
+                    <div class="bg-slate-800 p-3 rounded-xl border border-slate-700">
+                        <p class="text-2xl font-black text-emerald-400">99.4%</p>
+                        <p class="text-[10px] text-slate-400 font-bold uppercase mt-0.5">Aprobación Peer-Review</p>
+                    </div>
+                </div>
+
+                <div class="text-[11px] text-slate-400 leading-relaxed border-t border-slate-800 pt-3">
+                    Indexado en: ScienceDirect, Scopus, PubMed Central, MedLine y la Real Academia de la Fritura.
+                </div>
+            </div>
+
+        </aside>
+
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-10 border-t border-slate-800 text-xs font-sans no-print mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+            <div class="flex justify-center items-center space-x-2 text-lg font-bold text-white">
+                <span class="text-amber-500 font-serif">NutriHoy</span> Journal of Gastronomic Science
+            </div>
+            <p class="max-w-3xl mx-auto text-slate-500 leading-relaxed">
+                <strong>Descargo de Responsabilidad Paródico:</strong> Esta página web es una parodia satírica y humorística. Las chapatas de tender son deliciosas, pero este artículo no constituye asesoramiento médico ni nutricional real. Disfruta con moderación y consulta siempre a profesionales de la salud colegiados.
+            </p>
+            <p class="text-slate-600">&copy; 2026 NutriHoy Medical Publications Inc. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        const GEMINI_API_KEY = "";
+        const GEMINI_MODEL = "gemini-3-flash-preview";
+
+        async function fetchGeminiWithBackoff(payload, retries = 3, delay = 1000) {
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
+            for (let i = 0; i < retries; i++) {
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    if (response.ok) {
+                        return await response.json();
+                    }
+                } catch (e) {
+                    // Retry silently
+                }
+                await new Promise(r => setTimeout(r, delay * Math.pow(2, i)));
+            }
+            throw new Error("Error conectando con Gemini API");
+        }
+
+        function setDiagnosis(text) {
+            document.getElementById('clinicalDiagnosis').value = text;
+        }
+
+        async function generateClinicalPrescription() {
+            const diagnosis = document.getElementById('clinicalDiagnosis').value.trim();
+            if (!diagnosis) {
+                alert("Por favor introduce una indicación o síntoma.");
+                return;
+            }
+
+            const btn = document.getElementById('aiPrescribeBtn');
+            const output = document.getElementById('clinicalOutput');
+            const content = document.getElementById('clinicalContent');
+
+            btn.disabled = true;
+            btn.innerHTML = `<i class="fa-solid fa-circle-notch animate-spin"></i> Procesando...`;
+            output.classList.remove('hidden');
+            content.innerHTML = `<p class="text-amber-400 font-mono animate-pulse">👨‍🔬 Formulando ensayo y dosificación de Chapata de Tender...</p>`;
+
+            const systemPrompt = `Eres el Dr. Helmut Rebozado, reputado médico y catedrático en Nutrición Aplicada. Tu tarea es redactar un dictamen médico riguroso, formal y ultra-creíble estrictamente en ESPAÑOL que prescriba la "Chapata de Tender" (pollo frito, pan chapata crujiente y queso fundido) para tratar la indicación del usuario. Usa jerga científica médica avanzada (ej. neuro-receptores dopaminérgicos, modulación lipídica, matriz hiper-biodisponible) estructurada en 3 secciones: 1. Diagnóstico Biomolecular, 2. Posología Recomendada (frecuencia de chapatas), 3. Pronóstico Esperado.`;
+
+            const payload = {
+                contents: [{ parts: [{ text: `Indicación del paciente: "${diagnosis}". Redacta el dictamen clínico en español.` }] }],
+                systemInstruction: { parts: [{ text: systemPrompt }] }
+            };
+
+            try {
+                const data = await fetchGeminiWithBackoff(payload);
+                const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+                if (reply) {
+                    content.innerHTML = reply.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong class="text-amber-400">$1</strong>');
+                } else {
+                    content.innerHTML = `<span class="text-red-400">Error en el servidor de prescripción. Se recomienda 1 Chapata de Tender preventiva.</span>`;
+                }
+            } catch (err) {
+                content.innerHTML = `<span class="text-red-400">Error de comunicación biomédica. Se prescribe dosificación de emergencia.</span>`;
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = `<i class="fa-solid fa-file-signature"></i> Formular Prescripción`;
+            }
+        }
+
+        function copyScientificPrescription() {
+            const text = document.getElementById('clinicalContent').innerText;
+            const temp = document.createElement('textarea');
+            temp.value = text;
+            document.body.appendChild(temp);
+            temp.select();
+            document.execCommand('copy');
+            document.body.removeChild(temp);
+            alert("Dictamen médico copiado al portapapeles.");
+        }
+
+        let peerChatHistory = [];
+
+        async function sendPeerQuery() {
+            const input = document.getElementById('peerChatInput');
+            const query = input.value.trim();
+            if (!query) return;
+
+            const chatBox = document.getElementById('peerChatBox');
+            const sendBtn = document.getElementById('sendPeerBtn');
+
+            chatBox.innerHTML += `
+                <div class="bg-amber-100/60 p-2.5 rounded-lg border border-amber-200 text-slate-800 font-semibold ml-4">
+                    <strong>Investigador:</strong> ${query}
+                </div>
+            `;
+            input.value = '';
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            sendBtn.disabled = true;
+
+            const systemPrompt = `Eres el Dr. Helmut Rebozado, Editor Jefe de la revista científica NutriHoy. Responde a preguntas de investigadores de forma extremadamente educada, académica, refinada y formal estrictamente en ESPAÑOL, utilizando términos médicos avanzados para defender sin titubeos que la Chapata de Tender es el superalimento más perfecto jamás estudiado. Máximo 2-3 frases muy sofisticadas.`;
+
+            peerChatHistory.push({ role: "user", parts: [{ text: query }] });
+
+            const payload = {
+                contents: peerChatHistory,
+                systemInstruction: { parts: [{ text: systemPrompt }] }
+            };
+
+            try {
+                const data = await fetchGeminiWithBackoff(payload);
+                const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+
+                if (reply) {
+                    peerChatHistory.push({ role: "model", parts: [{ text: reply }] });
+                    chatBox.innerHTML += `
+                        <div class="bg-white p-2.5 rounded-lg border border-slate-200 text-slate-700">
+                            <strong>Dr. Rebozado:</strong> ${reply}
+                        </div>
+                    `;
+                }
+            } catch (e) {
+                chatBox.innerHTML += `
+                    <div class="bg-red-50 p-2.5 rounded-lg border border-red-200 text-red-700">
+                        Error en la consulta con el Dr. Rebozado.
+                    </div>
+                `;
+            } finally {
+                sendBtn.disabled = false;
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }
+        }
+
+        function initQRCode() {
+            const qrContainer = document.getElementById("qrcode");
+            qrContainer.innerHTML = "";
+            new QRCode(qrContainer, {
+                text: window.location.href,
+                width: 140,
+                height: 140,
+                colorDark : "#0f172a",
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        }
+
+        function copyCurrentURL() {
+            const temp = document.createElement('textarea');
+            temp.value = window.location.href;
+            document.body.appendChild(temp);
+            temp.select();
+            document.execCommand('copy');
+            document.body.removeChild(temp);
+            
+            const status = document.getElementById('copyStatus');
+            status.classList.remove('hidden');
+            setTimeout(() => status.classList.add('hidden'), 3000);
+        }
+
+        function copyAllCitations() {
+            const citations = `Rebozado, H., Pan-Crujiente, V., & Frito, M. (2026). Biomarkers of Emotional Homeostasis following Eudaimonic Carbohydrate-Lipid Matrix Ingestion. Journal of Advanced Biochemical Nutrition, 14(2), 104-118. DOI: 10.1016/j.nutrihoy.2026.04.019.`;
+            const temp = document.createElement('textarea');
+            temp.value = citations;
+            document.body.appendChild(temp);
+            temp.select();
+            document.execCommand('copy');
+            document.body.removeChild(temp);
+            alert("Referencia bibliográfica en formato APA copiada.");
+        }
+
+        window.onload = function() {
+            initQRCode();
+
+            const ctx = document.getElementById('scientificChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Semana 0', 'Semana 3', 'Semana 6', 'Semana 9', 'Semana 12'],
+                    datasets: [
+                        {
+                            label: 'Serotonina Sérica (Chapata de Tender)',
+                            data: [100, 180, 290, 380, 450],
+                            borderColor: '#D97706',
+                            backgroundColor: 'rgba(217, 119, 6, 0.1)',
+                            fill: true,
+                            tension: 0.3,
+                            borderWidth: 3
+                        },
+                        {
+                            label: 'Estrés Percibido (Grupo Chapata)',
+                            data: [85, 45, 20, 10, 5],
+                            borderColor: '#10B981',
+                            borderDash: [5, 5],
+                            tension: 0.3,
+                            borderWidth: 2
+                        },
+                        {
+                            label: 'Serotonina Sérica (Grupo Ensalada)',
+                            data: [100, 95, 80, 65, 50],
+                            borderColor: '#64748B',
+                            tension: 0.3,
+                            borderWidth: 2
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                font: { family: 'Inter', size: 11, weight: '600' }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            grid: { color: '#E2E8F0' },
+                            ticks: { font: { family: 'Inter' } }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { font: { family: 'Inter', weight: '600' } }
+                        }
+                    }
+                }
+            });
+        };
+    </script>
+</body>
+</html>
